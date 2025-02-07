@@ -1,0 +1,65 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Image from "astro/components/Image.astro";
+import photo1 from '../images/photo1.jpg';
+import Showcase from "../components/Showcase.astro";
+import Card from "../components/Card.astro";
+
+
+//const posts = await Astro.glob('./posts/*.md');
+const posts = await Astro.glob('./posts/*.md');
+---
+
+<Layout title="Astro Blog">
+  <Showcase heading="Actro Blog", text="A simple blog built with Astro">
+ 
+  </Showcase>
+  
+  <section class="page-content">
+    <div class="container">
+      <div class="card">
+        {posts.map(post =>(<Card><h3>{post.frontmatter.title}</h3><p>{post.frontmatter.excerpt}</p>
+   <p>{post.frontmatter.author}</p> <a href= {`/${post.frontmatter.slug}`} class="btn">Read More</a></Card>))}
+      </div>
+
+    </div>
+
+  </section>
+  
+  <section class="page-content">
+    <div class="container">
+      <div class="card">
+        <h2>Astro 1.0</h2>
+        <Image src={photo1} width={600} height={450} alt=""></Image>
+          <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
+          voluptate, quae, quod, voluptates quibusdam voluptatibus quidem
+          voluptatum quos quia quas nesciunt. Quisquam, quae. Quisquam, quae.
+          Quisquam, quae.
+        </p>
+        <a href="/one" class="btn">Read More</a>
+      </div>
+      <div class="card">
+        <h2>Astro 1.0 Release Update </h2>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
+          voluptate, quae, quod, voluptates quibusdam voluptatibus quidem
+          voluptatum quos quia quas nesciunt. Quisquam, quae. Quisquam, quae.
+          Quisquam, quae. Quisquam, quae.
+        </p>
+        <a href="post.html" class="btn">Read More</a>
+      </div>
+      <div class="card">
+        <h2>Astro on Netlify Edge Functions</h2>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
+          voluptate, quae, quod, voluptates quibusdam voluptatibus quidem
+          voluptatum quos quia quas nesciunt. Quisquam, quae. Quisquam, quae.
+          Quisquam, quae. Quisquam, quae.
+        </p>
+        <a href="post.html" class="btn">Read More</a>
+      </div>
+    </div>
+  </section>
+  
+</Layout>
